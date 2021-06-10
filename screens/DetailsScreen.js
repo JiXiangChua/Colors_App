@@ -12,7 +12,7 @@ export default function DetailsScreen({ route }) {
     <View
       style={[
         styles.container,
-        { backgroundColor: `rgba(${red}, ${green}, ${blue}, 1)` },
+        { backgroundColor: `rgba(${red}, ${green}, ${blue}, 1)` }, //${} to convert to string i think.
       ]}
     >
       <Text style={{ color: textColor }}>Red: {red}</Text>

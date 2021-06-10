@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FlatList,
   StyleSheet,
@@ -22,6 +22,14 @@ function HomeScreen({ navigation }) {
     { red: 0, green: 255, blue: 0, id: "1" },
     { red: 0, green: 0, blue: 255, id: "2" },
   ]); //starts with a default array of colors
+
+  useEffect(() => {
+    //useEffect happens after every render. When something happens, I want the app to behave this way.
+    navigation.setOptions({
+      headerRight: () => <Button onPress={addColor} title="Add" />, //we are adding a "Add" button everytime something changes.
+      //This new add button will call the new "addColor function" so that the new color will be added onto the previous array
+    });
+  }); //first para is a function that will run everytime something changes on the screen
 
   function renderItem({ item }) {
     return (
@@ -57,7 +65,7 @@ function HomeScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Button onPress={addColor} title="Add Color" />
+      {/* <Button onPress={addColor} title="Add Color" /> */}
       <FlatList //a flatlist must take in a data and a renderItem
         style={{ width: "100%" }}
         data={colors}

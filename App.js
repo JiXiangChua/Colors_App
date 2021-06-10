@@ -28,7 +28,14 @@ function HomeScreen({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           //console.log("You clicked a color");
-          navigation.navigate("Details");
+
+          navigation.navigate("Details", {
+            red: item.red,
+            green: item.green,
+            blue: item.blue,
+          }); //or you can pass in "...item" to pass in the props in item
+          //first parameter is the stack screen name that you want to go to
+          //2nd parameter is the data that you want send over from app.js to detailsScreen.js
         }}
       >
         <BlockRGB red={item.red} green={item.green} blue={item.blue} />
